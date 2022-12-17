@@ -51,7 +51,7 @@ class test implements ShouldBroadcast
         date_default_timezone_set('Europe/Warsaw');
         $date = new \DateTime();
         $dateback = new \DateTime();
-        $dateback->modify('-1 day') ;
+        $dateback->modify('-1 hours') ;
 
         $datestring = $date->format('Y-m-d H:i:s');
         $datebackstring = $dateback->format('Y-m-d H:i:s');
@@ -60,13 +60,12 @@ class test implements ShouldBroadcast
         if ($result->num_rows > 0) {
             // output data of each row
             while($row = $result->fetch_assoc()) {
-                $Id = $row["Id"];
                 $DateTime = $row["DateTime"];
                 $Temperature = $row["Temperature"];
                 $Pressure = $row["Pressure"];
                 $Humidity = $row["Humidity"];
                 $Lightlevel = $row["Lightlevel"];
-                $output[] = array('Id'=>$Id, 'DateTime'=>$DateTime, 'Temperature'=>$Temperature, 'Pressure'=>$Pressure, 'Humidity'=>$Humidity, 'Lightlevel'=>$Lightlevel);
+                $output[] = array('DateTime'=>$DateTime, 'Temperature'=>$Temperature, 'Pressure'=>$Pressure, 'Humidity'=>$Humidity, 'Lightlevel'=>$Lightlevel);
 
             }
         } else {
