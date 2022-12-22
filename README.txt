@@ -1,6 +1,6 @@
 Aby uruchomić server w osobnych oknach wierszu polecenia:
-php artisan serve //uruchomienie servera laravel
-php artisan websockets:serve //uruchomienie servera websocketów
+php artisan serve (--port="16311")//uruchomienie servera laravel, nawiasy dla hostingu
+php artisan websockets:serve (--port="16311")//uruchomienie servera websocketów, nawiasy dla hostingu
 npm run dev //rednderowanie?
 
 Aby wywołać event na websockecie należy uruchomić link:
