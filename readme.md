@@ -15,10 +15,8 @@ npm run dev
 
 Aby wywołać event na websockecie należy uruchomić link:
 ```
-URL/test //URL_strony
-``` 
-gdzie URL_strony - na przykład localhost lokalnie
-
+URL/test //URL strony - na przykład localhost lokalnie
+```  
 
 Ścieżka do strony startowej:
 ```
