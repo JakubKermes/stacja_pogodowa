@@ -1,28 +1,32 @@
-Aby uruchomić server w osobnych oknach wierszu polecenia:
+Aby uruchomić server w osobnych oknach wierszu polecenia należy:
+1. Uruchomić server laravel (nawiasy dla hostingu)
 ```
 php artisan serve (--port="16311")
 ```
-//uruchomienie servera laravel, nawiasy dla hostingu
+2. Uruchomić server websocketów (nawiasy dla hostingu)
 ```
 php artisan websockets:serve (--port="16311")
 ```
-//uruchomienie servera websocketów, nawiasy dla hostingu
+3. Renderowanie?
 ```
 npm run dev
 ```
-//rednderowanie?
+
 
 Aby wywołać event na websockecie należy uruchomić link:
 ```
 URL/test //URL_strony
 ``` 
-na przykład localhost lokalnie
+gdzie URL_strony - na przykład localhost lokalnie
 
+
+Ścieżka do strony startowej:
 ```
 test\resources\views\welcome.blade.php 
 ```
-- ścieżka do strony startowej
+
+Ścieżka do eventu (pobranie danych z bazy SQL):
 ``` test\app\Events\test.php ``` 
-- ścieżka do eventu (pobranie danych z bazy SQL)
-```test\resources\js\components\ExampleComponent.vue ```- ścieżka do componentu 
-aktualizwanego przez websocket, rysuje wykres (na razie nie działa rysowanie)
+
+Ścieżka do componentu, aktualizwanego przez websocket:
+```test\resources\js\components\ExampleComponent.vue ```
