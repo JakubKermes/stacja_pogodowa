@@ -14,14 +14,10 @@ npm run dev
 
 
 Aby wywołać event na websockecie należy uruchomić link:
-```
-URL/test //URL strony - na przykład localhost lokalnie
-```  
+``` URL/test //URL strony - na przykład localhost lokalnie ```  
 
 Ścieżka do strony startowej:
-```
-test\resources\views\welcome.blade.php 
-```
+``` test\resources\views\welcome.blade.php ```
 
 Ścieżka do eventu (pobranie danych z bazy SQL):
 ``` test\app\Events\test.php ``` 
