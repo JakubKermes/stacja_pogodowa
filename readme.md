@@ -18,7 +18,11 @@ URL/test //URL_strony
 ``` 
 na przykład localhost lokalnie
 
-test\resources\views\welcome.blade.php - ścieżka do strony startowej
-test\app\Events\test.php - ścieżka do eventu (pobranie danych z bazy SQL)
-test\resources\js\components\ExampleComponent.vue - ścieżka do componentu 
+```
+test\resources\views\welcome.blade.php 
+```
+- ścieżka do strony startowej
+``` test\app\Events\test.php ``` 
+- ścieżka do eventu (pobranie danych z bazy SQL)
+```test\resources\js\components\ExampleComponent.vue ```- ścieżka do componentu 
 aktualizwanego przez websocket, rysuje wykres (na razie nie działa rysowanie)
