@@ -51,8 +51,15 @@ class test implements ShouldBroadcast
         date_default_timezone_set('Europe/Warsaw');
         $date = new \DateTime();
         $dateback = new \DateTime();
-        $dateback->modify('-1 hours') ;
-
+        $dateback->modify('-5 hours') ;
+        if(isset($_POST['d-1'])) {
+            $dateback = new \DateTime();
+            $dateback->modify('-1 hours') ;
+        }
+        if(isset($_POST['d-7'])) {
+            $dateback = new \DateTime();
+            $dateback->modify('-7 hours') ;
+        }
         $datestring = $date->format('Y-m-d H:i:s');
         $datebackstring = $dateback->format('Y-m-d H:i:s');
         $sql = "SELECT * FROM pogoda WHERE DateTime >= '$datebackstring' AND DateTime <= '$datestring'";

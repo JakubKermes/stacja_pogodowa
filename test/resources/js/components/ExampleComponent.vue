@@ -1,6 +1,14 @@
 <template>
     <div>
-        payload:
+        <div class="_2-col just-l">Wykres:</div>
+        <div class="_2-col just-r">
+            <form method="post">
+                <input type="button" value="1 dzień" name="d-1">
+                <input type="button" value="7 dzień" name="d-7">
+            </form>
+        </div>
+    </div>
+    <div>
         <canvas id="myChart" width="400" height="400"></canvas>
     </div>
 </template>
