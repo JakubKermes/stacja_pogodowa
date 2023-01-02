@@ -49,16 +49,15 @@ class test implements ShouldBroadcast
             die("Connection failed: " . $conn->connect_error);
         }
         date_default_timezone_set('Europe/Warsaw');
-        $date = new \DateTime();
-        $dateback = new \DateTime();
+        $date = $dateback = new \DateTime();
         $dateback->modify('-5 hours') ;
         if(isset($_POST['d-1'])) {
-            $dateback = new \DateTime();
-            $dateback->modify('-1 hours') ;
+            $dateback = $date;
+            $dateback->modify('-1 days') ;
         }
         if(isset($_POST['d-7'])) {
-            $dateback = new \DateTime();
-            $dateback->modify('-7 hours') ;
+            $dateback = $date;
+            $dateback->modify('-7 days') ;
         }
         $datestring = $date->format('Y-m-d H:i:s');
         $datebackstring = $dateback->format('Y-m-d H:i:s');
