@@ -12,7 +12,6 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
 
-
 class test implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
@@ -35,10 +34,10 @@ class test implements ShouldBroadcast
 
     public function broadcastWith()
     {
-        $servername = "127.0.0.1";
-        $username = "test";
-        $password = "";
-        $dbname = "stacja_pogodowa_sobin";
+        $servername = "mysql0.small.pl";
+        $username = "m2507_pogoda";
+        $password = "DreamTeam1";
+        $dbname = "m2507_stacja_pogodowa_sobin";
         $output = array();
 
 // Create connection
@@ -51,40 +50,39 @@ class test implements ShouldBroadcast
         date_default_timezone_set('Europe/Warsaw');
         $date = new \DateTime();
         $dateback = new \DateTime();
-        $dateback->modify('-5 hours') ;
-        if(isset($_POST['d-1'])) {
-            $dateback = new \DateTime();
-            $dateback->modify('-1 hours') ;
-        }
-        if(isset($_POST['d-7'])) {
-            $dateback = new \DateTime();
-            $dateback->modify('-7 hours') ;
-        }
+        $dateback->modify('-3 hours');
+
         $datestring = $date->format('Y-m-d H:i:s');
         $datebackstring = $dateback->format('Y-m-d H:i:s');
         $sql = "SELECT * FROM pogoda WHERE DateTime >= '$datebackstring' AND DateTime <= '$datestring'";
-        $result = $conn -> query($sql);
+        $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             // output data of each row
-            while($row = $result->fetch_assoc()) {
+            while ($row = $result->fetch_assoc()) {
                 $DateTime = $row["DateTime"];
                 $Temperature = $row["Temperature"];
                 $Pressure = $row["Pressure"];
                 $Humidity = $row["Humidity"];
                 $Lightlevel = $row["Lightlevel"];
-                $output[] = array('DateTime'=>$DateTime, 'Temperature'=>$Temperature, 'Pressure'=>$Pressure, 'Humidity'=>$Humidity, 'Lightlevel'=>$Lightlevel);
+                $output[] = [
+                    'DateTime' => $DateTime,
+                    'Temperature' => $Temperature,
+                    'Pressure' => $Pressure,
+                    'Humidity' => $Humidity,
+                    'Lightlevel' => $Lightlevel
+                ];
 
             }
         } else {
             echo "0 results";
         }
-        return [
-            $output
-        ];
+        return $output;
     }
+
     public function broadcastOn()
     {
         return new Channel('test');
     }
 }
+
 ?>
