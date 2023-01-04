@@ -48,16 +48,17 @@ class test implements ShouldBroadcast
             die("Connection failed: " . $conn->connect_error);
         }
         date_default_timezone_set('Europe/Warsaw');
-        $date = $dateback = new \DateTime();
-        $dateback->modify('-5 hours') ;
-        if(isset($_POST['d-1'])) {
-            $dateback = $date;
-            $dateback->modify('-1 days') ;
-        }
-        if(isset($_POST['d-7'])) {
-            $dateback = $date;
-            $dateback->modify('-7 days') ;
-        }
+        $date = new \DateTime();
+        $dateback = new \DateTime();
+        echo $dateback->format('Y-m-d H:i:s');
+        $time_offset = $_GET["t"];
+
+            $dateback->modify((string)$time_offset . ' days');
+            echo " ";
+            echo $time_offset;
+            echo " ";
+
+        echo $dateback->format('Y-m-d H:i:s');
         $datestring = $date->format('Y-m-d H:i:s');
         $datebackstring = $dateback->format('Y-m-d H:i:s');
         $sql = "SELECT * FROM pogoda WHERE DateTime >= '$datebackstring' AND DateTime <= '$datestring'";

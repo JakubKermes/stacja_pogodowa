@@ -1,22 +1,27 @@
 <template>
+
     <div>
         <div class="_2-col just-l">Wykres:</div>
         <div class="_2-col just-r">
-            <form method="post">
-                <input type="button" value="1 dzień" name="d-1">
-                <input type="button" value="7 dzień" name="d-7">
-            </form>
+            <input type="button" value="1 dzien" name="time_offset" onclick='fetch("http://localhost:8000/test/?t=-1").then(response => response.text()).then(text => console.log(text));'>
+            <input type="button" value="7 dni" name="time_offset" onclick='fetch("http://localhost:8000/test/?t=-7").then(response => response.text()).then(text => console.log(text));'>
+            <input type="button" value="update" v-on:click="update_chart">
+
         </div>
     </div>
-    <div>        
+    <div>
         <canvas id="myChart" width="400" height="400"></canvas>
     </div>
 </template>
 
 <script>
 import {Chart} from 'chart.js/auto';
-// const Chart = require('chart.js');
 export default {
+    methods: {
+        update_chart(){
+            console.log("hej");
+        }
+    },
     data() {
         return {
             chart: null,
@@ -25,22 +30,17 @@ export default {
     mounted() {
         Echo.channel('test')
             .listen('test', (e) => {
-                console.log(JSON.stringify(e));
+                // console.log(JSON.stringify(e));
                 const DateTime = [];
                 const Temperature = [];
                 const Pressure = [];
                 const Humidity = [];
                 const LightLevel = [];
                 e.forEach(function (row) {
-                    console.log(row.DateTime);
                     DateTime.push(row.DateTime);
-                    console.log(row.Temperature);
                     Temperature.push(row.Temperature);
-                    console.log(row.Pressure);
                     Pressure.push(row.Pressure);
-                    console.log(row.Humidity);
                     Humidity.push(row.Humidity);
-                    console.log(row.Lightlevel);
                     LightLevel.push(row.Lightlevel);
                 });
                 if (!this.chart) {
@@ -69,23 +69,9 @@ export default {
                                 },
                             ],
                         },
-                        options: {
-                            scales:{
-                                xAxes: [{
-                                    type: 'time',
-                                    time: {
-                                        unit: 'minute',
-                                        displayFormats: {
-                                            minute: 'HH:mm'
-                                        }
-                                    }
-                                }]
-                            }
-                        }
+
                     });
                 } else {
-                    // Check if the data has actually changed
-                    if (JSON.stringify(e) != JSON.stringify(this.chart.data)) {
                         // Update the chart with the new data
                         this.chart.data.labels = DateTime;
                         this.chart.data.datasets[0] = Temperature;
@@ -93,9 +79,15 @@ export default {
                         this.chart.data.datasets[2] = Humidity;
                         this.chart.data.datasets[3] = LightLevel;
                         this.chart.update({preservation: true});
-                    }
                 }
             });
     },
 };
+function update_chart(){
+    console.log("dziala");
+}
+fetch("http://localhost:8000/test/?t=-1")
+    .then(response => response.text())
+    .then(text => console.log(text));
+
 </script>

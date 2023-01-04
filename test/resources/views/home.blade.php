@@ -16,7 +16,7 @@
     </div>
 </div>
 @endsection
-<script>
+<script src="transpiled-code.js">
     import ExampleComponent from "@/components/ExampleComponent.vue";
     export default {
         components: {ExampleComponent}
