@@ -53,7 +53,7 @@ class test implements ShouldBroadcast
         echo $dateback->format('Y-m-d H:i:s');
         $time_offset = $_GET['t'];
 
-            $dateback->modify(((string)$time_offset.' days'));
+            $dateback->modify($time_offset.' days');
             echo " ";
             echo $time_offset;
             echo " ";
