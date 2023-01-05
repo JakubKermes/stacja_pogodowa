@@ -16,6 +16,7 @@
 <script>
 import {Chart} from 'chart.js/auto';
 import {shallowRef} from 'vue';
+import moment from "moment";
 
 export default {
     methods: {
@@ -44,47 +45,59 @@ export default {
                     Humidity.push(row.Humidity);
                     LightLevel.push(row.Lightlevel);
                 });
+
                 if (!this.chart) {
                     const ctx = document.getElementById('myChart').getContext('2d');
                     this.chart = shallowRef(new Chart(ctx, {
                         type: 'line',
                         data: {
-                            labels: DateTime,
+                            labels: DateTime.map(item => moment(item).format("HH:mm")),
 
                             datasets: [
                                 {
-                                    label: 'Temperature',
+                                    label: 'Temperature [°C]',
                                     data: Temperature,
                                 },
                                 {
-                                    label: 'Pressure',
+                                    label: 'Pressure [kPa]',
                                     data: Pressure,
                                 },
                                 {
-                                    label: 'Humidity',
+                                    label: 'Humidity [%]',
                                     data: Humidity,
                                 },
                                 {
-                                    label: 'Light level',
+                                    label: 'Light level [%]',
                                     data: LightLevel,
                                 },
                             ],
                             options: {
                                 scales: {
                                     y: {
-                                        beginAtZero: true
+                                        beginAtZero: true,
                                     },
-                                    x: {
+                                    // x: {
+                                    //     type: 'time',
+                                    //     time: {
+                                    //         format: 'YYYY-MM-DD HH:mm:ss',
+                                    //         unit: 'hour',
+                                    //         unitStepSize: 1,
+                                    //         displayFormats: {
+                                    //             hour: 'HH:mm',
+                                    //         }
+                                    //     }
+                                    // },
+                                    xAxes: [{
                                         type: 'time',
                                         time: {
-                                            format: 'YYYY-MM-DD HH:mm:ss',
-                                            unit: 'hour',
-                                            unitStepSize: 1,
-                                            displayFormats: {
-                                                hour: 'HH:mm',
-                                            }
+                                            parser: 'YYYY-MM-DD HH:mm:ss',
+                                        },
+                                        ticks: {
+                                            min: 0,
+                                            max: 100,
+                                            stepSize: 10,
                                         }
-                                    }
+                                    }],
                                 }
                             }
                         },
@@ -102,6 +115,7 @@ export default {
             });
     },
 };
+
 
 fetch("http://localhost:8000/test/?t=-2")
     .then(response => response.text())
