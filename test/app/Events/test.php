@@ -51,9 +51,9 @@ class test implements ShouldBroadcast
         $date = new \DateTime();
         $dateback = new \DateTime();
         echo $dateback->format('Y-m-d H:i:s');
-        $time_offset = $_GET["t"];
+        $time_offset = $_GET['t'];
 
-            $dateback->modify((string)$time_offset . ' days');
+            $dateback->modify(((string)$time_offset.' days'));
             echo " ";
             echo $time_offset;
             echo " ";
@@ -73,8 +73,8 @@ class test implements ShouldBroadcast
                 $Lightlevel = $row["Lightlevel"];
                 $output[] = [
                     'DateTime' => $DateTime,
-                    'Temperature' => $Temperature,
-                    'Pressure' => $Pressure,
+                    'Temperature' => (int)$Temperature,
+                    'Pressure' => (int)$Pressure,
                     'Humidity' => $Humidity,
                     'Lightlevel' => $Lightlevel
                 ];

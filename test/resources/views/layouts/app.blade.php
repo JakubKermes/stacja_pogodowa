@@ -35,10 +35,30 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
+                    <ul class="navbar-nav ms-auto"><!-- theme selector -->
+
 
                     </ul>
+                    <div class="theme l" onclick="theme(this)">
+                        <div id="dk"></div>
+                    </div>
+                    <script>
+                        function theme(a){
+                            if (a.classList.contains('l')) {
+                                a.classList.remove('l');
+                                a.classList.add('d');
+                                document.body.style.filter='invert(1)';
+                                document.body.style.backgroundColor='#1d2123';
+                                document.getElementById('dk').style.left='0px';
+                            } else {
+                                a.classList.remove('d');
+                                a.classList.add('l');
+                                document.body.style.filter='invert(0)';
+                                document.body.style.backgroundColor='#fff';
+                                document.getElementById('dk').style.left='26px';
+                            }
+                        }
+                    </script>
                 </div>
             </div>
         </nav>
