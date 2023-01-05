@@ -13,8 +13,6 @@
     </div>
 </template>
 
-// test amogus
-
 <script>
 import {Chart} from 'chart.js/auto';
 import {shallowRef} from 'vue';
