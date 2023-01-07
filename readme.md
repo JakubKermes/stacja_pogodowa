@@ -1,4 +1,5 @@
-### To run the server, in separate command prompt windows start:
+### Run the server
+in separate command prompt windows start:
 
 * Laravel server
 ```
