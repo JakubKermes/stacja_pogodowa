@@ -1,26 +1,35 @@
-Aby uruchomić server w osobnych oknach wierszu polecenia należy:
-1. Uruchomić server laravel (nawiasy dla hostingu)
+### Run the server
+in separate command prompt windows start:
+
+* Laravel server
 ```
-php artisan serve (--port="16311")
+php artisan serve
 ```
-2. Uruchomić server websocketów (nawiasy dla hostingu)
+* The websocket server
 ```
-php artisan websockets:serve (--port="16311")
+php artisan websockets:serve
 ```
-3. Renderowanie?
+* The development server
 ```
 npm run dev
 ```
 
 
-Aby wywołać event na websockecie należy uruchomić link:
-``` URL/test //URL strony - na przykład localhost lokalnie ```  
+To call an event on the websocket, run the link:
+``` URL/test //web URL - for example localhost ```  
 
-Ścieżka do strony startowej:
+
+### Paths
+
+Path to the home page:
 ``` test\resources\views\welcome.blade.php ```
 
-Ścieżka do eventu (pobranie danych z bazy SQL):
+Path to the event (downloading data from the SQL database):
 ``` test\app\Events\test.php ``` 
 
-Ścieżka do componentu, aktualizwanego przez websocket:
+Path to the component, updated by websocket:
 ```test\resources\js\components\ExampleComponent.vue ```
+
+
+### Tip
+To transfer a project to another computer, use [the guide.](https://stackoverflow.com/questions/32697861/moving-laravel-project-between-computers)
