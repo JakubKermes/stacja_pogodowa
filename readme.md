@@ -26,4 +26,4 @@ Aby wywołać event na websockecie należy uruchomić link:
 ```test\resources\js\components\ExampleComponent.vue ```
 
 Tip:
-aby przenieść projekt na inny komputer, skorzystaj z[poradnika](https://stackoverflow.com/questions/32697861/moving-laravel-project-between-computers)
+aby przenieść projekt na inny komputer, skorzystaj z [poradnika](https://stackoverflow.com/questions/32697861/moving-laravel-project-between-computers)
