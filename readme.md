@@ -1,21 +1,24 @@
-To run the server, in separate command prompt windows:
+### To run the server, in separate command prompt windows start:
 
-1.Start laravel server
+* Laravel server
 ```
 php artisan serve
 ```
-2.Start the websocket server
+* The websocket server
 ```
 php artisan websockets:serve
 ```
-3.Start the development server
+* The development server
 ```
 npm run dev
 ```
 
 
 To call an event on the websocket, run the link:
-``` URL/test //URL strony - na przykład localhost lokalnie ```  
+``` URL/test //web URL - for example localhost ```  
+
+
+### Paths
 
 Path to the home page:
 ``` test\resources\views\welcome.blade.php ```
@@ -26,5 +29,6 @@ Path to the event (downloading data from the SQL database):
 Path to the component, updated by websocket:
 ```test\resources\js\components\ExampleComponent.vue ```
 
-Tip:
-To transfer a project to another computer, use [the guide](https://stackoverflow.com/questions/32697861/moving-laravel-project-between-computers)
+
+### Tip
+To transfer a project to another computer, use [the guide.](https://stackoverflow.com/questions/32697861/moving-laravel-project-between-computers)
