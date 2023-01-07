@@ -20,6 +20,7 @@ Route::get('/', function () {
 Route::get('/test', function (){
     event(new test());
 });
+
 Route::get('/broadcast', function (){
     broadcast(new test());
 });
