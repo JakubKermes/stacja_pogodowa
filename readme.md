@@ -1,4 +1,5 @@
 To run the server, in separate command prompt windows:
+
 1.Start laravel server
 ```
 php artisan serve
