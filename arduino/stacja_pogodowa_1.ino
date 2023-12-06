@@ -2,10 +2,10 @@
 
 #include <WiFiEsp.h>
 
-char ssid[] = "PLAY Internet 4G LTE-191C45";    
-char pass[] = "30191C45";    
+char ssid[] = "PLAY Internet 4G";    
+char pass[] = "";    
 char ssid1[] = "OPPO A91";
-char pass1[] = "12345678";
+char pass1[] = "";
 
 char server[] = "192.168.1.117";
 char server1[] = "192.168.1.100";
